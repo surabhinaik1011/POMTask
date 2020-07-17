@@ -35,7 +35,7 @@ public class LoginPageTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		// driver path changed
 		System.setProperty("webdriver.chrome.driver", "driver/chromedriver81.exe");
 		driver = new ChromeDriver();
 		driver.get(prop.getProperty("url"));
