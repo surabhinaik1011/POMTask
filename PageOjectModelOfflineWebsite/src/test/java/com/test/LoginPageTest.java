@@ -36,7 +36,7 @@ public class LoginPageTest {
 			e.printStackTrace();
 		}
 
-		System.setProperty("webdriver.chrome.driver", "chromedriver81.exe");
+		System.setProperty("webdriver.chrome.driver", "driver/chromedriver81.exe");
 		driver = new ChromeDriver();
 		driver.get(prop.getProperty("url"));
 		driver.manage().window().maximize();
