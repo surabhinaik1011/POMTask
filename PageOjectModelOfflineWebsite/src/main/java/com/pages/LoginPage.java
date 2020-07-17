@@ -77,18 +77,18 @@ public class LoginPage {
 				return new LoginPage(driver);
 			}
 
-			public DashboardPage NavigateToDashboard() {
+			public DashBoardPage NavigateToDashboard() {
 				typeUserName("kiran@gmail.com");
 				typePassword("123456");
 				loginButton.click();
-				return new DashboardPage(driver);
+				return new DashBoardPage(driver);
 			}
 
-			public DashboardPage VerifyCorrectLoginCred() {
+			public DashBoardPage VerifyCorrectLoginCred() {
 				typeUserName("kiran@gmail.com");
 				typePassword("123456");
 				loginButton.click();
-				return new DashboardPage(driver);
+				return new DashBoardPage(driver);
 			}
 
 			public RegistrationPage clickOnRegLink() {

@@ -8,7 +8,9 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import com.pages.LoginPage;
@@ -20,7 +22,7 @@ public class LoginPageTest {
 	public static Properties prop;
 	public static FileInputStream fis;
 
-	@BeforeSuite
+	@BeforeMethod
 	public void setEnv() {
 		String propPath = System.getProperty("user.dir") + "/src/main/resources/config.properties";
 		prop = new Properties();
@@ -34,7 +36,7 @@ public class LoginPageTest {
 			e.printStackTrace();
 		}
 
-		System.setProperty("webdriver.chrome.driver", "C:/chromedriver81.exe");
+		System.setProperty("webdriver.chrome.driver", "chromedriver81.exe");
 		driver = new ChromeDriver();
 		driver.get(prop.getProperty("url"));
 		driver.manage().window().maximize();
@@ -44,7 +46,7 @@ public class LoginPageTest {
 		System.out.println("LoginTest inialize");
 	}
 
-	@AfterSuite
+	@AfterMethod
 	public void exitEnv() {
 		driver.close();
 	}
