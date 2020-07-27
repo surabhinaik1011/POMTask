@@ -1,6 +1,11 @@
 package com.test;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -10,7 +15,7 @@ public class RegistrationTest extends TestBase {
 	
 	RegistrationPage register = null;
 
-	@BeforeTest
+	@BeforeSuite
 	public void launchApplication() throws Throwable {
 		
 		super.launchApplication();
@@ -49,6 +54,11 @@ public class RegistrationTest extends TestBase {
 	@Test(priority = 6)
 	public void checkIfMembershipExist() {
 		Assert.assertTrue(register.validationOfMembership(driver));
+	}
+	
+	@AfterSuite
+	public void closeApplication(){
+		super.CloseLaunchApplication();
 	}
 
 }
