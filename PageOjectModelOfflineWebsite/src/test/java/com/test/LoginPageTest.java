@@ -1,56 +1,21 @@
 package com.test;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import com.pages.LoginPage;
 
-public class LoginPageTest {
+public class LoginPageTest extends TestBase {
+	
+	LoginPage lp = null;
 
-	LoginPage lp;
-	public WebDriver driver;
-	public static Properties prop;
-	public static FileInputStream fis;
-
-	@BeforeMethod
-	public void setEnv() {
-		String propPath = System.getProperty("user.dir") + "/src/main/resources/config.properties";
-		prop = new Properties();
-
-		try {
-			fis = new FileInputStream(propPath);
-			prop.load(fis);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		// driver path changed
-		System.setProperty("webdriver.chrome.driver", "driver/chromedriver81.exe");
-		driver = new ChromeDriver();
-		driver.get(prop.getProperty("url"));
-		driver.manage().window().maximize();
-		// wait is taken from property file
-		driver.manage().timeouts().implicitlyWait(Integer.parseInt(prop.getProperty("wait")), TimeUnit.SECONDS);
+	@BeforeSuite
+	public void launchApplication() throws Throwable {
+		super.launchApplication();
 		lp = new LoginPage(driver);
-		System.out.println("LoginTest inialize");
 	}
-
-	@AfterMethod
-	public void exitEnv() {
-		driver.close();
-	}
-
+	
 	@Test(priority = 1)
 	public void checkURL() {
 		Assert.assertTrue(lp.checkURL());
@@ -92,6 +57,11 @@ public class LoginPageTest {
 	public void checkNavigationBetDashboardAndLogin() {
 		lp.navigationBetDashboardAndLogin();
 		Assert.assertTrue(lp.navigateToLoginFromDashboard());
+	}
+
+	@AfterSuite
+	public void closeApplication(){
+		super.CloseLaunchApplication();
 	}
 
 }
