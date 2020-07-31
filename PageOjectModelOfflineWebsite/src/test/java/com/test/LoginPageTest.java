@@ -1,5 +1,6 @@
 package com.test;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -11,9 +12,10 @@ public class LoginPageTest extends TestBase {
 	LoginPage lp = null;
 
 	@BeforeSuite
-	public void launchApplication() throws Throwable {
-		super.launchApplication();
+	public WebDriver launchApplication() throws Throwable {
+		driver=super.launchApplication();
 		lp = new LoginPage(driver);
+		return driver;
 	}
 	
 	@Test(priority = 1)
