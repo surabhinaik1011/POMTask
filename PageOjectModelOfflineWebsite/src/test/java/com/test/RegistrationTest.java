@@ -1,5 +1,6 @@
 package com.test;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -12,10 +13,11 @@ public class RegistrationTest extends TestBase {
 	RegistrationPage register = null;
 
 	@BeforeSuite
-	public void launchApplication() throws Throwable {
+	public WebDriver launchApplication() throws Throwable {
 		
-		super.launchApplication();
+		driver=super.launchApplication();
 		register = new RegistrationPage(driver);
+		return driver;
 	}
 	
 	@Test(priority = 1)
