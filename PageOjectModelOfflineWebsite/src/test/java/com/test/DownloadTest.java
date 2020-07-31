@@ -40,12 +40,12 @@ public class DownloadTest extends TestBase {
 
 	@BeforeMethod
 	public void loadUrl() throws Throwable {
-	String URL = readAnyProperty("config.properties", "url");
+	/*String URL = readAnyProperty("config.properties", "url");
 		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get(URL);
-		driver.manage().window().maximize();
-		//super.launchApplication();
+		driver.manage().window().maximize();*/
+		driver=super.launchApplication();
 		dp = new DownloadPage(driver);
 		dwp = dp.navigateToDownloadPage();
 	}
@@ -64,7 +64,7 @@ public class DownloadTest extends TestBase {
 		Thread.sleep(3000);
 	}
 
-	/*@Test(priority = 2)
+	@Test(priority = 2)
 	public void validateNoOfRowColumn() throws Exception {
 		super.passTest("validateNoOfRowColumn", pageName);
 		Assert.assertTrue(dp.checkTotalRowColNum(testlogger));
@@ -115,5 +115,4 @@ public class DownloadTest extends TestBase {
 		super.passTest("ValidateStartWithVendorName", pageName);
 		Assert.assertTrue(dp.checkVendorStartWith(testlogger));
 	}
-*/
 }
