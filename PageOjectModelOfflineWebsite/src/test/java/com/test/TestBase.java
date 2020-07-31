@@ -35,7 +35,6 @@ public class TestBase {
 			fis = new FileInputStream(System.getProperty("user.dir") + "/src/main/resources/" + "/config.properties");
 			prop = new Properties();
 			prop.load(fis);
-
 			val = prop.getProperty(propName);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,12 +42,13 @@ public class TestBase {
 		return val;
 	}
 
-	public void launchApplication() throws Throwable {
+	public WebDriver launchApplication() throws Throwable {
 		String URL = readAnyProperty("config.properties", "url");
 		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get(URL);
 		driver.manage().window().maximize();
+		return driver;
 	}
 
 	public void CloseLaunchApplication() {
