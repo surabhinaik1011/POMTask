@@ -53,7 +53,7 @@ public class DownloadTest extends TestBase {
 	@AfterMethod
 	public void closeBrowser() {
 		testlogger.log(Status.INFO, "Browser Closed");
-		driver.close();
+		super.CloseLaunchApplication();
 	}
 
 	@Test(priority = 1)

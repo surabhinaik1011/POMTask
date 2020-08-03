@@ -4,7 +4,7 @@
   <test name="Test">
     <classes>
        <class name="com.test.LoginPageTest"/> 
-      
+        <class name="com.test.RegistrationTest"/>  
        <class name="com.test.DownloadTest"/>
     </classes>
   </test> <!-- Test -->

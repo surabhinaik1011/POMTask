@@ -2,21 +2,52 @@ package com.test;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.Status;
+import com.pages.DownloadPage;
 import com.pages.LoginPage;
 
 public class LoginPageTest extends TestBase {
 	
 	LoginPage lp = null;
 
-	@BeforeSuite
-	public WebDriver launchApplication() throws Throwable {
+	// Extent Report Variables
+		String pageName = "Login PAGE TESTCASES";
+		String extentReprtName = "LoginPageExtentReport";
+		String hostName = "Offline Website";
+		String environment = "Login Page Testing";
+		String uName = "Surabhi";
+		String docTitle = "LoginPage";
+		String reportName = "LoginPageExtentReport ";
+
+		// ExtentReport Methods
+		@BeforeTest()
+		public void beforeTest() {
+			super.setReport(extentReprtName, hostName, environment, uName, docTitle, reportName);
+		}
+
+		@AfterTest
+		public void afterTest() {
+			super.endReport();
+		}
+		
+		
+		
+	@BeforeMethod
+	public void loadUrl() throws Throwable {
+
 		driver=super.launchApplication();
 		lp = new LoginPage(driver);
-		return driver;
 	}
+	
+	
 	
 	@Test(priority = 1)
 	public void checkURL() {
@@ -60,9 +91,9 @@ public class LoginPageTest extends TestBase {
 		lp.navigationBetDashboardAndLogin();
 		Assert.assertTrue(lp.navigateToLoginFromDashboard());
 	}
-
-	@AfterSuite
-	public void closeApplication(){
+	@AfterMethod
+	public void closeBrowser() {
+		//testlogger.log(Status.INFO, "Browser Closed");
 		super.CloseLaunchApplication();
 	}
 
