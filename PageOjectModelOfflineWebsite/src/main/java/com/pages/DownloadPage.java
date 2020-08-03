@@ -94,7 +94,7 @@ public class DownloadPage {
 	}
 
 	public boolean validateHeaderCount(ExtentTest logger2) {
-		// test1.log(Status.PASS, "asd");
+
 		logger2.log(Status.INFO, "Finding list of headers");
 		List<WebElement> listOfHeader = header.findElements(By.tagName("th"));
 		logger2.log(Status.INFO, "Header list finding completed ");
