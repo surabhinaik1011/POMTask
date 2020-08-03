@@ -71,7 +71,7 @@ public class DownloadTest extends TestBase {
 		Thread.sleep(3000);
 	}
 
-	/*@Test(priority = 3)
+	@Test(priority = 3)
 	public void validateFollowVender() throws Exception {
 		super.passTest("validateFollowVender", pageName);
 		Assert.assertTrue(dp.checkFollowVender(testlogger));
@@ -114,5 +114,5 @@ public class DownloadTest extends TestBase {
 	public void validateStartWithVendorName() {
 		super.passTest("ValidateStartWithVendorName", pageName);
 		Assert.assertTrue(dp.checkVendorStartWith(testlogger));
-	}*/
+	}
 }
